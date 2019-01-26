@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Foods</title>
+</head>
+<body>
+<ul>
+    {% for food in foods %}
+        <li>{{ food }}</li>
+    {% endfor %}
+</ul>
+<h2>Add food to db</h2>
+<form>
+    <label for="food_name">Name:</label>
+    <input type="text" name="name" id="food_name">
+    <label for="min_expiry">Minimum number of days before expiry</label>
+    <input type="number" name="min_expiry" id="min_expiry">
+    <label for="max_expiry">Maximum number of days before expiry</label>
+    <input type="number" name="max_expiry" id="max_expiry">
+</form>
+<script>
+
+</script>
+</body>
+</html>
