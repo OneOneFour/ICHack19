@@ -71,7 +71,17 @@ def remove_food_from_db():
     else:
         return abort(500)
 
-@app.route("/api/food/")
+
+@app.route("/api/food/<int:id>", method=['PUT'])
+def update_food(id):
+    food = Food.objects.get_or_404(_id=id)
+    if request.data:
+        data_to_update = json.loads(request.data)
+        for (key, value) in data_to_update.iteritems():
+            setattr(food, key, value)
+        return food.to_json()
+    return abort(500)
+
 
 @app.route('/api/barcode/<int:barcode>')
 def get_food_from_barcode(barcode):
