@@ -47,6 +47,7 @@ def set_food():
     return abort(500)
 
 
-@app.route('/login', methods=['POST'])
-def login():
-    pass
+
+@app.route('/login')
+def show_login():
+    return render_template("login.html")
