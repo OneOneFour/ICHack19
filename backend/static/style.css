@@ -70,3 +70,9 @@ body{
     width: 45%;
     height: 50px;
 }
+.text-right {
+    float: right;
+    font-size: 15px;
+    padding: 3px;
+    margin-top: 0px;
+}
