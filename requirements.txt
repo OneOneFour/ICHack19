@@ -3,3 +3,4 @@ flask-pymongo
 flask-login
 requests
 pycountry
+flask-dance

@@ -3,7 +3,27 @@ from bson import json_util
 from flask import render_template, request, redirect, abort, jsonify, url_for
 from . import app, mongo_db
 from .models import Food
+from flask_dance.contrib.github import make_github_blueprint, github
 
+
+github_blueprint = make_github_blueprint(client_id='b7fe8aa6299d7d8aa187', client_secret='935f2cf040042bdea0a5f70d525e21bcc8b92b6a')
+
+app.register_blueprint(github_blueprint, url_prefix='/github_login')
+
+
+@app.route('/github')
+def github_login():
+    if not github.authorized:
+        return redirect(url_for('github.login'))
+
+    account_info = github.get('/user')
+
+    if account_info.ok:
+        account_info_json = account_info.json()
+
+        return '<h1>Your Github name is {}'.format(account_info_json['login'])
+
+    return '<h1>Request failed!</h1>'
 
 @app.route('/foods')
 def show_foods():
