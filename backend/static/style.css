@@ -4,7 +4,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: url("landscape.jpg") no-repeat;
+    background: url("green2.jpg") no-repeat;
     background-size: cover;
 }
 .login-box{
@@ -13,9 +13,9 @@ body{
     position: absolute;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -30%);
+    transform: translate(-50%, -10%);
     background-color: white;
-    opacity: 0.65;
+    opacity: 0.85;
 }
 .login-box h1{
     float: left;
@@ -24,7 +24,7 @@ body{
     border-bottom: 5px solid #003300;
 }
 .textbox {
-    width: 100%;
+    width: 92%;
     overflow: hidden;
     font-size: 20px;
     padding: 8px 0;
@@ -33,6 +33,7 @@ body{
 }
 .textbox i{
     width: 26px;
+    height: 30px;
     float: left;
     text-align: center;
 }
@@ -43,7 +44,7 @@ body{
     color: black;
     font-size: 15px;
     width: 60%;
-    margin: 5px;
+    margin: 0px;
 }
 .input {
     border: none;
@@ -56,10 +57,10 @@ body{
     margin: 10px 10px;
 }
 .btn{
-    background-color: lawngreen;
+    background-color: forestgreen;
     border: 2px solid black;
     cursor: pointer;
-    padding: 15px;
+    padding: 0px;
     color: black;
     font-size: 20px;
     border-radius: 15px;
@@ -67,4 +68,5 @@ body{
     margin-right: 30px;
     margin-bottom: 10px;
     width: 45%;
+    height: 50px;
 }
