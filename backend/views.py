@@ -20,12 +20,10 @@ def get_food(name):
 def set_food_form():
     new_food = {
         'name': request.form['name'],
-        'expiry_date_min': request.form['expiry_date_min'],
-        'expiry_date_max': request.form['expiry_date_max']
+        'expiration_date': request.form['expiration_date']
     }
     mongo_db.db.foods.insert(new_food)
     return redirect('/foods')
-
 
 @app.route('/api/set_food/', methods=['POST'])
 def set_food():
