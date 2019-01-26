@@ -4,9 +4,81 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <style>
+    body{
+        background-image: url(landscape.jpg);
+        background-size: cover;
+    }
 
+    </style>
 </head>
 <body>
+<style>
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    {#background: url("landscape.jpg") no-repeat;#}
+    {#background-size: cover;#}
+}
+.login-box{
+width: 300px;
+position: absolute;
+top: 30%;
+left: 50%;
+transform: translate(-50%, -30%);
+
+}
+.login-box h1{
+    float: left;
+    font-size: 35px;
+    border-bottom: 5px solid #003300;
+}
+.textbox {
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid #003300;
+
+}
+.textbox i{
+    width: 26px;
+    float: left;
+    text-align: center;
+
+}
+.textbox input{
+    border: none;
+    outline: none;
+    background: none;
+    color: black;
+    font-size: 16px;
+    width: 80%;
+}
+{#.input {#}
+{#    border: none;#}
+{#    outline: none;#}
+{#    background: none;#}
+{#    color: white;#}
+{#    font-size: 16px;#}
+{#    width: 80%;#}
+{#    float: left;#}
+{#    margin: 0 15px;#}
+{#}#}
+button{
+    width: 100%;
+    background: none;
+    border: 2px solid #003300;
+    cursor: pointer;
+    padding: 10px;
+    color: black;
+    font-size: 16px;
+    margin: 16px 0;
+}
+</style>
 <div class="login-box">
     <h1>Login</h1>
 
@@ -20,7 +92,7 @@
         <input type = "password" name = "password" placeholder = "Password" required = "required"/>
     </div>
 
-<input class="btn btn-primary btn-large btn-block", value = "Sign in ">
+    <button type="submit">Sign in</button>
 
 </div>
 </body>
