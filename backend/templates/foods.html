@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Foods</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+
 <body>
 <ul>
     {% for food in foods %}
@@ -11,16 +13,15 @@
     {% endfor %}
 </ul>
 <h2>Add food to db</h2>
-<form>
+<form id="new_form" action="/set_food" method="post">
     <label for="food_name">Name:</label>
     <input type="text" name="name" id="food_name">
     <label for="min_expiry">Minimum number of days before expiry</label>
-    <input type="number" name="min_expiry" id="min_expiry">
+    <input type="number" name="expiry_date_min" id="min_expiry">
     <label for="max_expiry">Maximum number of days before expiry</label>
-    <input type="number" name="max_expiry" id="max_expiry">
+    <input type="number" name="expiry_date_max" id="max_expiry">
+    <button id="submit_button">Submit</button>
 </form>
-<script>
 
-</script>
 </body>
 </html>
