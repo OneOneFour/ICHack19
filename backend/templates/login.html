@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-<h2>Enter username and password</h2>
-<form id="login_details" action="/enter_login" method="post">
-    <label for="username">Name:</label>
-    <input type="text" name="username" id="username">
-    <label for="password">Name:</label>
-    <input type="text" name="password" id="password">
-</form>
+<div class="login-box">
+    <h1>Login</h1>
+
+    <div class="textbox">
+        <i class="fas fa-user"></i>
+        <input type= "text" name = "username" placeholder = "Username" required = "required"/>
+    </div>
+
+    <div class="textbox">
+        <i class="fas fa-lock"></i>
+        <input type = "password" name = "password" placeholder = "Password" required = "required"/>
+    </div>
+
+<input class="btn btn-primary btn-large btn-block", value = "Sign in ">
+
+</div>
 </body>
 </html>

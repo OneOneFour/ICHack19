@@ -48,6 +48,7 @@ def set_food():
             return "Successfully created item"
     return "Something went wrong!"
 
-@app.route('/login', methods=['POST'])
-def login():
-    pass
+
+@app.route('/login')
+def show_login():
+    return render_template("login.html")
