@@ -35,3 +35,7 @@ def set_food():
         if foods.find_one({'name': new_food_dict['name']}).count() > 0:
             return "Successfully created item"
     return "Something went wrong!"
+
+@app.route('/login'), methods=['']
+def login():
+    pass
