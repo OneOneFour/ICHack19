@@ -1,19 +1,28 @@
 from flask import Flask
-from flask_pymongo import PyMongo
+from flask_mongoengine import MongoEngine
 from flask_login import LoginManager
-#Create flask app
+
+# Create flask app
 app = Flask(__name__)
 
-#Connect to DB
-app.config["MONGO_URI"] = "mongodb://localhost:27017/foods"
-mongo_db = PyMongo(app)
+# Connect to DB
+app.config["MONGODB_SETTINGS"] = {
+    'db': 'foods',
+    'host': 'localhost',
+    'port': 27017
+}
+app.config['EDAMAM_APP_ID'] = "6fc94a08"
+app.config["EDAMAM_APP_AUTH"] = "015f0b82bfdad03e657f4cecf3b0586d"
 
-#Creating login instance
+mongo_db = MongoEngine()
+mongo_db.init_app(app)
+
+# Creating login instance
 login = LoginManager(app)
 
 DEBUG = True
 
-#We import views after setting things up but BEFORE app.run to ensure the functions for the views have all been defined in time
+# We import views after setting things up but BEFORE app.run to ensure the functions for the views have all been defined in time
 from .views import *
 
 if __name__ == "__main__":

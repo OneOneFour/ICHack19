@@ -9,7 +9,7 @@
 <body>
 <ul>
     {% for food in foods %}
-        <li>{{ food }}</li>
+        <li>{{ food.name }} expires in {{ food.get_expiry_time() }} days. Here are some recipes {{ food.get_recipe() }}! </li>
     {% endfor %}
 </ul>
 <h2>Add food to db</h2>
