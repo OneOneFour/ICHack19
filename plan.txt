@@ -1,7 +1,7 @@
 Front End
 
 Searchbox for food
-Food tiem
+Food item
 Barcod Scanner
 Achievements
 Non sustainablae items
