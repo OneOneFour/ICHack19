@@ -14,10 +14,8 @@ app.config["MONGODB_SETTINGS"] = {
 }
 app.config['EDAMAM_APP_ID'] = "6fc94a08"
 app.config["EDAMAM_APP_AUTH"] = "015f0b82bfdad03e657f4cecf3b0586d"
-
 app.config["SOCRATA_APP_TOKEN"] = "fw89kSX55yjwub5zQ1FRNaOuW"
 app.config["SOCRATA_SECRET_TOKEN"] = "NsMtdhERY1MT-AFJEl_zWGnCWwaCxr86zN_a"
-
 app.config['SECRET_KEY'] = 'secretlog' #for github logins
 
 

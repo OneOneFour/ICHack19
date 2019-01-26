@@ -1,12 +1,14 @@
 import json
+
+import requests
 from bson import json_util
 from flask import render_template, request, redirect, abort, jsonify, url_for
 from . import app, mongo_db
 from .models import Food
 from flask_dance.contrib.github import make_github_blueprint, github
 
-
-github_blueprint = make_github_blueprint(client_id='b7fe8aa6299d7d8aa187', client_secret='935f2cf040042bdea0a5f70d525e21bcc8b92b6a')
+github_blueprint = make_github_blueprint(client_id='b7fe8aa6299d7d8aa187',
+                                         client_secret='935f2cf040042bdea0a5f70d525e21bcc8b92b6a')
 
 app.register_blueprint(github_blueprint, url_prefix='/github_login')
 
@@ -24,6 +26,7 @@ def github_login():
         return '<h1>Your Github name is {}'.format(account_info_json['login'])
 
     return '<h1>Request failed!</h1>'
+
 
 @app.route('/foods')
 def show_foods():
@@ -81,15 +84,15 @@ def get_food_from_barcode(barcode):
     if food:
         return food.to_json()
     else:
-        #Query service to lookup product from DB
+        resp = requests.get(f"https://world.openfoodfacts.org/api/v0/product/{barcode}.json")
+        if resp.status_code == 200:
+            resp_dict = json.load(resp)
+            if resp_dict['status'] == 1:
+                # Has found a barcode in the openfoodfacts db
+                food = Food(name=resp_dict["product_name"], barcode=barcode)
+                food.save()
+                return food.to_json()
     return "Can't find item for barcode"
-
-
-@app.route('/app/food/<int:id>/co2',method=['POST'])
-def estimate_co2_consumption(id):
-    location_data = json.load(request.data)
-    food = Food.objects.get_or_404(_id=id)
-    if location_data:
 
 
 @app.route('/api/food/', methods=['POST'])
