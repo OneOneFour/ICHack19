@@ -48,6 +48,6 @@ def set_food():
             return "Successfully created item"
     return "Something went wrong!"
 
-@app.route('/login', methods=[''])
+@app.route('/login', methods=['POST'])
 def login():
     pass
