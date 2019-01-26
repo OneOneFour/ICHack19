@@ -1,5 +1,6 @@
+from bson import json_util
 import json
-from flask import jsonify, render_template, request, redirect
+from flask import render_template, request, redirect, abort
 from . import app, mongo_db
 
 
@@ -9,11 +10,22 @@ def show_foods():
     return render_template("foods.html", foods=foods)
 
 
+@app.route('/api/delete_food/<id>')
+def delete_food(id):
+    mongo_db.db.foods.delete_one({'_id':id})
+    if mongo_db.db.foods.find({'_id':id}).count() == 0:
+        return "Item deleted successfully"
+    else:
+        return f"Error deleting item with id:{id}"
+
+
 @app.route('/api/get_food/<name>', methods=['GET'])
 def get_food(name):
     food = mongo_db.db.foods.find_one({'name': name})
-    food.pop('_id')
-    return jsonify(food)
+    if food:
+        return json_util.dumps(food)
+    else:
+        return abort(404)
 
 
 @app.route('/set_food', methods=['POST'])
@@ -24,6 +36,7 @@ def set_food_form():
     }
     mongo_db.db.foods.insert(new_food)
     return redirect('/foods')
+
 
 @app.route('/api/set_food/', methods=['POST'])
 def set_food():
