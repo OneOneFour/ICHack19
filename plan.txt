@@ -1,0 +1,13 @@
+Front End
+
+Searchbox for food
+Food item
+Barcod Scanner
+Achievements
+Non sustainablae items
+
+Back End
+
+Database: shows Co2 saved, Palm oil, Expiry dates etc
+Pull in from APIs from supermarkets: Tesco/Sainsbury
+Co2 from different source 
