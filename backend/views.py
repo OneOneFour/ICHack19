@@ -1,4 +1,3 @@
-from bson import json_util
 import json
 from flask import render_template, request, redirect, abort
 from . import app, mongo_db
@@ -49,6 +48,6 @@ def set_food():
             return "Successfully created item"
     return "Something went wrong!"
 
-@app.route('/login'), methods=['']
+@app.route('/login', methods=[''])
 def login():
     pass
