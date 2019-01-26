@@ -1,6 +1,7 @@
-from . import mongo_db,app
+from . import mongo_db, app
 from datetime import datetime
 from .edmam_wrapper import receipe_lookup
+
 
 class Food(mongo_db.Document):
     name = mongo_db.StringField(required=True)
@@ -16,6 +17,6 @@ class Food(mongo_db.Document):
         return (self.expiry - datetime.now()).days < 0
 
     def get_recipe(self):
-        return str(receipe_lookup(self.name))
+        return receipe_lookup(self.name)
 
 

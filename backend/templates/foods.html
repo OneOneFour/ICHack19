@@ -7,17 +7,30 @@
 </head>
 
 <body>
-<ul>
+<section>
     {% for food in foods %}
-        <li>{{ food.name }} expires in {{ food.get_expiry_time() }} days. Here are some recipes {{ food.get_recipe() }}! </li>
+        <article>
+            <h2>{{ food.name }}</h2>
+            <p>Expires in {{ food.get_expiry_time() }} days</p>
+            <h3>Here are some recipes!</h3>
+            <ul>
+            {% for recipe in food.get_recipe() %}
+                <li>
+                <a href="{{ recipe["url"] }}"><h3>{{ recipe["label"] }}</h3></a>
+                    <p>Calories:{{ recipe["calories"]|int}}</p></li>
+                {% else %}
+                <h3>We couldn't find any recipes for this product :-(</h3>
+            {% endfor %}
+            </ul>
+        </article>
     {% endfor %}
-</ul>
+</section>
 <h2>Add food to db</h2>
 <form id="new_form" action="/set_food" method="post">
     <label for="food_name">Name:</label>
     <input type="text" name="name" id="food_name">
     <label for="expiry_date">Date of Expiration</label>
-    <input type="date", name="expiration_date" id="expiration_date">
+    <input type="date" , name="expiration_date" id="expiration_date">
     <button id="submit_button">Submit</button>
 </form>
 
