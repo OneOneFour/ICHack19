@@ -1,4 +1,3 @@
-from bson import json_util
 import json
 from flask import render_template, request, redirect, abort
 from . import app, mongo_db
@@ -48,3 +47,7 @@ def set_food():
         if foods.find_one({'name': new_food_dict['name']}).count() > 0:
             return "Successfully created item"
     return "Something went wrong!"
+
+@app.route('/login', methods=['POST'])
+def login():
+    pass
