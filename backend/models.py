@@ -1,6 +1,6 @@
 import requests
-
-from . import mongo_db, app, json
+import json
+from . import mongo_db, app
 from datetime import datetime
 from .edmam_wrapper import receipe_lookup
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -31,7 +31,7 @@ def get_distance(a, b):
 
 class Food(mongo_db.Document):
     name = mongo_db.StringField(required=True)
-    barcode = mongo_db.IntegerField()
+    barcode = mongo_db.IntField()
     country_of_origin = mongo_db.PointField()
     expiry_advice = mongo_db.StringField()
     packaging = mongo_db.FloatField()
@@ -41,11 +41,12 @@ class Food(mongo_db.Document):
     def save(self, *args, **kwargs):
         # Trawl site for info if it is available
         header = {'X-App-Token': app.config['SOCRATA_APP_TOKEN']}
-        params = {'food': self.name.capitalise()}
-        resp = requests.get(self.FOOD_EMISSION_SITE, params=params, header=header)
+        params = {'food': self.name}
+        resp = requests.get(self.FOOD_EMISSION_SITE, params=params, headers=header)
         if resp.status_code == 200:
-            food_data = json.loads(resp.text)[0]
-            self.co2_emission_base = float(food_data["grams_co2e_per_serving"])
+            food_data = json.loads(resp.text)
+            if len(food_data) >0:
+                self.co2_emission_base = float(food_data[0]["grams_co2e_per_serving"])
         super(Food, self).save(*args, **kwargs)
 
     def get_recipe(self):

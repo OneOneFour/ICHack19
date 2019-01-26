@@ -61,7 +61,7 @@ def get_recipe_for_food(name):
         return abort(404)
 
 
-@app.route("/api/food/remove/", method=["POST"])
+@app.route("/api/food/remove/", methods=["POST"])
 def remove_food_from_db():
     delete_food_dict = json.loads(request.data)
     food = Food.objects.get_or_404(_id=delete_food_dict["id"])
@@ -71,13 +71,8 @@ def remove_food_from_db():
     else:
         return abort(500)
 
+@app.route("/api/food/")
 
-# @app.route('/set_food', methods=['POST'])
-# def set_food_form():
-#     new_food = Food(name=request.form['name'])
-#
-#     new_food.save()
-#     return redirect('/foods')
 @app.route('/api/barcode/<int:barcode>')
 def get_food_from_barcode(barcode):
     food = Food.objects(barcode=barcode)
@@ -86,10 +81,11 @@ def get_food_from_barcode(barcode):
     else:
         resp = requests.get(f"https://world.openfoodfacts.org/api/v0/product/{barcode}.json")
         if resp.status_code == 200:
-            resp_dict = json.load(resp)
+            resp_dict = json.loads(resp.text)
             if resp_dict['status'] == 1:
+                food_data = resp_dict['product']
                 # Has found a barcode in the openfoodfacts db
-                food = Food(name=resp_dict["product_name"], barcode=barcode)
+                food = Food(name=food_data["product_name"], barcode=barcode)
                 food.save()
                 return food.to_json()
     return "Can't find item for barcode"
