@@ -7,14 +7,14 @@ def hello():
     return "Hello world!"
 
 
-@app.route('/api/get_food/<name>')
+@app.route('/api/get_food/<name>',method=['GET'])
 def get_food(name):
     food = mongo_db.db.foods.find_one({'name': name})
     food.pop('_id')
     return jsonify(food)
 
 
-@app.route('/api/set_food/')
+@app.route('/api/set_food/',method=['POST'])
 def set_food():
     foods = mongo_db.db.foods
     new_food = {
