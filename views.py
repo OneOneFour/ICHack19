@@ -18,6 +18,13 @@ app.register_blueprint(github_blueprint, url_prefix='/github_login')
 def index():
     return render_template("index.html", current_user=current_user)
 
+@app.route('/recipes')
+def recipes():
+    return render_template("recipes.html")
+
+@app.route('/aboutUs')
+def aboutUs():
+    return render_template("aboutUs.html")
 
 @app.route('/ideal')
 def ideal():
