@@ -140,5 +140,12 @@ def signup_user():
         if request.form['password'] != request.form['confirm_password']:
             flash("Passwords must match")
             return redirect("signup")
-
+        if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", request.form["email"]):
+            flash("Email is not valid. Please enter a valid email")
+            return redirect("signup")
+        new_user = User(username=request.form["username"], email=request.form['email'])
+        new_user.set_password(request.form['password'])
+        new_user.save()
+        login_user(new_user)
+        return redirect(url_for('index'))
     return render_template("signup.html")
