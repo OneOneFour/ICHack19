@@ -108,3 +108,7 @@ def set_food():
 @app.route('/login', methods=["POST", "GET"])
 def show_login():
     return render_template("login.html")
+
+@app.route('/signup', methods=["POST", "GET"])
+def show_signup():
+    return render_template("signup.html")
