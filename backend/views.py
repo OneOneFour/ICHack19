@@ -13,9 +13,6 @@ github_blueprint = make_github_blueprint(client_id='b7fe8aa6299d7d8aa187',
 app.register_blueprint(github_blueprint, url_prefix='/github_login')
 
 
-
-
-
 @app.route('/foods')
 def show_foods():
     foods = Food.objects
@@ -104,7 +101,7 @@ def set_food():
 
 
 @app.route('/login', methods=["POST", "GET"])
-def show_login():
+def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     if request.method == 'POST':
@@ -114,11 +111,11 @@ def show_login():
             return redirect('login')
         login_user(user)
         return redirect(url_for('index'))
-    return render_template("login.html")
+    return render_template("login.html", title="Login")
 
 
 @app.route("/signup", methods=["POST", "GET"])
-def signup_user():
+def signup():
     if current_user.is_authenticated:
         return redirect(url_for("index"))
     if request.method == 'POST':
@@ -135,9 +132,11 @@ def signup_user():
                         first_name=request.form['first_name'], last_name=request.form['last_name'])
         new_user.set_password(request.form['password'])
         new_user.save()
+        remember_me = bool(request.form['rememberme'])
         login_user(new_user)
-        return redirect(url_for('index'))
-    return render_template("signup.html")
+        return redirect(url_for('index'), remember_me)
+    return render_template("signup.html", title="Signup")
+
 
 @app.route('/github')
 def github_login():
@@ -147,9 +146,9 @@ def github_login():
     account_info = github.get('/user')
 
     if account_info.ok:
-        #account_info_json = account_info.json()
+        # account_info_json = account_info.json()
 
-        #return '<h1>Your Github name is {}'.format(account_info_json['login'])
+        # return '<h1>Your Github name is {}'.format(account_info_json['login'])
         return redirect(url_for('index'))
 
     return '<h1>Request failed!</h1>'
