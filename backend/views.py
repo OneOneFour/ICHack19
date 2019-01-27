@@ -1,7 +1,7 @@
 import json
 import re
 import requests
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 from flask import render_template, request, redirect, abort, jsonify, url_for, flash
 from . import app, mongo_db
 from .models import Food, User
@@ -12,16 +12,16 @@ github_blueprint = make_github_blueprint(client_id='b7fe8aa6299d7d8aa187',
 
 app.register_blueprint(github_blueprint, url_prefix='/github_login')
 
+
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template("index.html")
+    return render_template("index.html", current_user=current_user)
+
 
 @app.route('/ideal')
 def ideal():
     return render_template("ideal.html")
-
-
 
 
 @app.route('/foods')
@@ -165,7 +165,18 @@ def github_login():
     return '<h1>Request failed!</h1>'
 
 
+@app.route('/logout')
+def logout():
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
+    logout_user()
+    if current_user is not None:
+        flash("Unable to log user out. Please try again")
+    else:
+        flash("You have been logged out, have a nice day!")
+    return redirect(url_for('index'))
+
+
 @app.route('/recover')
 def recover():
     return render_template("forgot.html")
-

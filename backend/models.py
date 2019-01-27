@@ -21,6 +21,8 @@ class User(UserMixin, mongo_db.Document):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def __repr__(self):
+        return f"User {self.username}"
 
 def get_distance(a, b):
     R = 6371
@@ -72,4 +74,4 @@ class UserFood(mongo_db.Document):
 
 @login.user_loader
 def load_user(id):
-    return User.objects(_id=id)
+    return User.objects.get(id = id)
