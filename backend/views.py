@@ -13,19 +13,7 @@ github_blueprint = make_github_blueprint(client_id='b7fe8aa6299d7d8aa187',
 app.register_blueprint(github_blueprint, url_prefix='/github_login')
 
 
-@app.route('/github')
-def github_login():
-    if not github.authorized:
-        return redirect(url_for('github.login'))
 
-    account_info = github.get('/user')
-
-    if account_info.ok:
-        account_info_json = account_info.json()
-
-        return '<h1>Your Github name is {}'.format(account_info_json['login'])
-
-    return '<h1>Request failed!</h1>'
 
 
 @app.route('/foods')
@@ -150,3 +138,18 @@ def signup_user():
         login_user(new_user)
         return redirect(url_for('index'))
     return render_template("signup.html")
+
+@app.route('/github')
+def github_login():
+    if not github.authorized:
+        return redirect(url_for('github.login'))
+
+    account_info = github.get('/user')
+
+    if account_info.ok:
+        #account_info_json = account_info.json()
+
+        #return '<h1>Your Github name is {}'.format(account_info_json['login'])
+        return redirect(url_for('index'))
+
+    return '<h1>Request failed!</h1>'
