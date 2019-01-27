@@ -143,7 +143,8 @@ def signup_user():
         if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", request.form["email"]):
             flash("Email is not valid. Please enter a valid email")
             return redirect("signup")
-        new_user = User(username=request.form["username"], email=request.form['email'])
+        new_user = User(username=request.form["username"], email=request.form['email'],
+                        first_name=request.form['first_name'], last_name=request.form['last_name'])
         new_user.set_password(request.form['password'])
         new_user.save()
         login_user(new_user)

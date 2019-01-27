@@ -1,5 +1,6 @@
 import requests
 import json
+from flask_login import UserMixin
 from . import mongo_db, app, login
 from datetime import datetime
 from .edmam_wrapper import receipe_lookup
@@ -7,7 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import math
 
 
-class User(mongo_db.Document):
+class User(UserMixin,mongo_db.Document):
     username = mongo_db.StringField(required=True, unique=True)
     first_name = mongo_db.StringField(required=True)
     last_name = mongo_db.StringField(required=True)
