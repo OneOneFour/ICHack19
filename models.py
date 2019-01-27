@@ -1,9 +1,9 @@
 import requests
 import json
 from flask_login import UserMixin
-from . import mongo_db, app, login
+from main import mongo_db, app, login
 from datetime import datetime
-from .edmam_wrapper import receipe_lookup
+from edmam_wrapper import receipe_lookup
 from werkzeug.security import generate_password_hash, check_password_hash
 import math
 

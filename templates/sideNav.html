@@ -11,7 +11,7 @@
 </head>
 <body style="background-color: white; min-height: 100%">
 <nav class="navbar navbar-expand-lg navbar-dark col-12" style="background-color: #629460;">
-    <a class="navbar-brand" href="/">Ideal</a>
+    <a class="navbar-brand" href="/">Name</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,7 +19,7 @@
     <div class="collapse navbar-collapse" id="navbarsExample05">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">About us<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/aboutUs">About us<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Food waste</a>
@@ -51,6 +51,16 @@
         </ul>
     </div>
 </nav>
+
+<!-- The sidebar -->
+<div class="row">
+<div class="sidebar" style="margin-left: 10px">
+    <a class="active" href="ideal">Expiring soon</a>
+    <a class="active" href="recipes">Recipes</a>
+    <a class="active" href="#contact">Your products</a>
+    <a class="active" href="#about">Add product</a>
+    <a class="active" href="#about">Settings</a>
+</div>
 
 {% block content %}{% endblock %}
 

@@ -1,5 +1,5 @@
 import requests
-from . import app
+from main import app
 import json
 
 intresting_keys = ("label", "url", "calories", "healthLabels")
