@@ -54,3 +54,20 @@ div.content {
         float: none;
     }
 }
+
+.post {
+    height: 15rem;
+    background-color: #f0f0f0;
+    color: #1a460c;
+    margin-top: 2rem;
+    margin-left: 25%;
+    -webkit-box-shadow: 0 9px 6px -6px #999;
+    -moz-box-shadow: 0 9px 6px -6px #999;
+    box-shadow: 0 9px 6px -6px #999;
+    z-index: 10;
+    min-width: 50%;
+}
+
+p {
+    font-size: large;
+}
