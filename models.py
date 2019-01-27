@@ -53,7 +53,7 @@ class Food(mongo_db.Document):
                 self.co2_emission_base = float(food_data[0]["grams_co2e_per_serving"])
         super(Food, self).save(*args, **kwargs)
 
-    def get_recipe(self):
+    def get_recipes(self):
         return receipe_lookup(self.name)
 
 

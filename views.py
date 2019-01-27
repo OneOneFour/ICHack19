@@ -51,7 +51,7 @@ def search_food():
 
 @app.route('/recipes/<id>')
 def recipes(id):
-    food = Food.object.get_or_404(id=id)
+    food = Food.objects.get_or_404(id=id)
     if food:
         recipes = food.get_recipes()
         return render_template("recipes.html", recipes=recipes)
@@ -71,7 +71,7 @@ def get_food(name):
 def get_recipe_for_food(name):
     food = Food.objects.get_or_404(name=name)
     if food:
-        return jsonify(food.get_recipe())
+        return jsonify(food.get_recipes())
     else:
         return abort(404)
 
