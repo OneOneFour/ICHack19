@@ -25,13 +25,13 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <p>Calories: {{ recipe['calories'] }}</p>
+                            <p>Calories: {{ recipe['calories']|int}}</p>
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <a href="{{ recipes["url"] }}">Link to the recipe</a>
+                            <a href="{{ recipe["url"] }}">Link to the recipe</a>
                         </div>
                     </div>
                 </div>

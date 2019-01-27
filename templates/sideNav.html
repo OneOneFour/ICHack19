@@ -66,8 +66,8 @@
     height: 100%;">
 <div class="sidebar" style="margin-left: 10px; position: absolute; background-color: #9dbc9c; color: white">
     <a class="active" href="ideal">Expiring soon</a>
-    {% if food %}
-    <a class="active" href="{{ url_for('recipes',id=food.id|string) }}">Recipes</a>
+    {% if foods %}
+        <a class="active" href="{{ url_for('recipes',id=foods[0].id|string) }}">Recipes for {{ foods[0].name }}</a>
     {% endif %}
     <a class="active" href="#contact">Your products</a>
     <a class="active" href="#about">Add product</a>

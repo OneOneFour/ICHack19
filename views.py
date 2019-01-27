@@ -140,8 +140,7 @@ def login():
         if user is None or not user.check_password(request.form['password']):
             flash("Your username or password is not valid. Please check your details and try again")
             return redirect('login')
-        remember_me = bool(request.form['remember_me'])
-        login_user(user, remember_me)
+        login_user(user, True)
         return redirect(url_for('index'))
     return render_template("login.html", title="Login")
 
