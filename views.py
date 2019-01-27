@@ -5,12 +5,14 @@ from flask_login import current_user, login_user, logout_user
 from flask import render_template, request, redirect, abort, jsonify, url_for, flash
 from main import app, mongo_db
 from models import Food, User
-from flask_dance.contrib.github import make_github_blueprint, github
 
-github_blueprint = make_github_blueprint(client_id='b7fe8aa6299d7d8aa187',
-                                         client_secret='935f2cf040042bdea0a5f70d525e21bcc8b92b6a')
 
-app.register_blueprint(github_blueprint, url_prefix='/github_login')
+# #from flask_dance.contrib.github import make_github_blueprint, github
+#
+# #github_blueprint = make_github_blueprint(client_id='b7fe8aa6299d7d8aa187',
+#                                          client_secret='935f2cf040042bdea0a5f70d525e21bcc8b92b6a')
+#
+# app.register_blueprint(github_blueprint, url_prefix='/github_login')
 
 
 @app.route('/')
@@ -18,13 +20,16 @@ app.register_blueprint(github_blueprint, url_prefix='/github_login')
 def index():
     return render_template("index.html", current_user=current_user)
 
+
 @app.route('/recipes')
 def recipes():
     return render_template("recipes.html")
 
+
 @app.route('/aboutUs')
 def aboutUs():
     return render_template("aboutUs.html")
+
 
 @app.route('/ideal')
 def ideal():
@@ -128,7 +133,7 @@ def login():
             flash("Your username or password is not valid. Please check your details and try again")
             return redirect('login')
         remember_me = bool(request.form['rememberme'])
-        login_user(user,remember_me)
+        login_user(user, remember_me)
         return redirect(url_for('index'))
     return render_template("login.html", title="Login")
 
@@ -156,20 +161,20 @@ def signup():
     return render_template("signup.html", title="Signup")
 
 
-@app.route('/github')
-def github_login():
-    if not github.authorized:
-        return redirect(url_for('github.login'))
-
-    account_info = github.get('/user')
-
-    if account_info.ok:
-        # account_info_json = account_info.json()
-
-        # return '<h1>Your Github name is {}'.format(account_info_json['login'])
-        return redirect(url_for('index'))
-
-    return '<h1>Request failed!</h1>'
+# @app.route('/github')
+# def github_login():
+#     if not github.authorized:
+#         return redirect(url_for('github.login'))
+#
+#     account_info = github.get('/user')
+#
+#     if account_info.ok:
+#         # account_info_json = account_info.json()
+#
+#         # return '<h1>Your Github name is {}'.format(account_info_json['login'])
+#         return redirect(url_for('index'))
+#
+#     return '<h1>Request failed!</h1>'
 
 
 @app.route('/logout')
