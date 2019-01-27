@@ -154,10 +154,9 @@ def github_login():
     account_info = github.get('/user')
 
     if account_info.ok:
-        # account_info_json = account_info.json()
+        account_info_json = account_info.json()
 
-        # return '<h1>Your Github name is {}'.format(account_info_json['login'])
-        return redirect(url_for('index'))
+        return redirect(url_for('ideal'))
 
     return '<h1>Request failed!</h1>'
 
@@ -165,4 +164,3 @@ def github_login():
 @app.route('/recover')
 def recover():
     return render_template("forgot.html")
-
