@@ -11,8 +11,8 @@ class User(mongo_db.Document):
     username = mongo_db.StringField(required=True, unique=True)
     first_name = mongo_db.StringField(required=True)
     last_name = mongo_db.StringField(required=True)
-    password = mongo_db.StringField()
-
+    password = mongo_db.StringField(required=True)
+    email = mongo_db.EmailField(required=True)
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
