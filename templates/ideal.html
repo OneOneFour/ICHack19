@@ -1,7 +1,8 @@
 {% extends "sideNav.html" %}
 {% block content %}
     <!-- product -->
-    {% if food%}
+    {% if foods %}
+    {% for food in foods %}
         <div class="col-7 post">
             <div class="row" style="height: 2rem; background-color: #629460;">
                 <p style="margin: auto;font-size: 1.5rem;font-weight: bold;color: white;">{{ food.name }}</p>
@@ -40,7 +41,7 @@
                     </div>
                 </div>
             </div>
-        </div>{% else %}
+        </div>{% endfor %}{% else %}
         <h2>No food found :-(</h2>
     {% endif %}
 {% endblock %}

@@ -28,7 +28,7 @@ def aboutUs():
 @app.route('/foods')
 def show_foods():
     foods = Food.objects
-    return render_template("foods.html", foods=foods)
+    return render_template("ideal.html", foods=foods)
 
 
 @app.route('/api/delete_food/<id>')
@@ -47,7 +47,7 @@ def search_food():
     if q:
         f = Food.objects(name__icontains=q).first()
         f.save()
-    return render_template("ideal.html", food=f)
+    return render_template("ideal.html", foods=[f,])
 
 
 @app.route('/recipes/<id>')
