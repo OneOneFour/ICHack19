@@ -50,6 +50,7 @@ class Food(mongo_db.Document):
         if resp.status_code == 200:
             food_data = json.loads(resp.text)
             if len(food_data) > 0:
+                print(self.co2_emission_base)
                 self.co2_emission_base = float(food_data[0]["grams_co2e_per_serving"])
         super(Food, self).save(*args, **kwargs)
 

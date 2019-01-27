@@ -46,6 +46,7 @@ def search_food():
     f, recipes = None, None
     if q:
         f = Food.objects(name__icontains=q).first()
+        f.save()
     return render_template("ideal.html", food=f)
 
 
