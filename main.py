@@ -28,7 +28,7 @@ login = LoginManager(app)
 DEBUG = True
 
 # We import views after setting things up but BEFORE app.run to ensure the functions for the views have all been defined in time
-from .views import *
+from views import *
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000, debug=DEBUG)

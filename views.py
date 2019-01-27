@@ -3,8 +3,8 @@ import re
 import requests
 from flask_login import current_user, login_user, logout_user
 from flask import render_template, request, redirect, abort, jsonify, url_for, flash
-from . import app, mongo_db
-from .models import Food, User
+from main import app, mongo_db
+from models import Food, User
 from flask_dance.contrib.github import make_github_blueprint, github
 
 github_blueprint = make_github_blueprint(client_id='b7fe8aa6299d7d8aa187',

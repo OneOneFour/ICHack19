@@ -5,3 +5,5 @@ handlers:
   static_dir: static
 - url: /.*
   script: auto
+
+entrypoint: gunicorn -b :$PORT main:app
