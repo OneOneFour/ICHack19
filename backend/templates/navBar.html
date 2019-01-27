@@ -46,8 +46,8 @@
                 {% endif %}
             </li>
         {% if current_user.is_authenticated %}
-            <li><a class="nav-link" href="{{ url_for('logout') }}">Log out</a></li>
-        {% endf %}
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Log out</a></li>
+        {% endif %}
         </ul>
     </div>
 </nav>

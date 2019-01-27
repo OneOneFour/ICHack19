@@ -170,7 +170,7 @@ def logout():
     if not current_user.is_authenticated:
         return redirect(url_for('index'))
     logout_user()
-    if current_user is not None:
+    if current_user.is_authenticated:
         flash("Unable to log user out. Please try again")
     else:
         flash("You have been logged out, have a nice day!")

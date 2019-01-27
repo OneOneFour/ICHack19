@@ -4,4 +4,14 @@
     <img src="{{ url_for('static', filename= 'assets/carrots2.jpeg') }}" alt="Food" style="width: 100%;">
     <!--<div class="centered">Time to think about reducing food waste</div>-->
 </div>
+    <script>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        let messages = {{messages|safe }};
+        for(let i =0; i < messages.length; i++){
+            alert(messages[i]);
+        }
+        {% endif %}
+        {% endwith %}
+    </script>
 {% endblock %}
