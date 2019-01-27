@@ -153,3 +153,9 @@ def github_login():
         return redirect(url_for('index'))
 
     return '<h1>Request failed!</h1>'
+
+
+@app.route('/recover')
+def recover():
+    return render_template("forgot.html")
+
