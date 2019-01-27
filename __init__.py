@@ -8,10 +8,10 @@ app = Flask(__name__)
 
 # Connect to DB
 app.config["MONGODB_SETTINGS"] = {
-    'db': 'foods',
-    'host': 'localhost',
-    'port': 27017
+    "db":"ideal_foods",
+    "host":"mongodb://admin:weareideal@cluster0-shard-00-00-efsur.gcp.mongodb.net:27017,cluster0-shard-00-01-efsur.gcp.mongodb.net:27017,cluster0-shard-00-02-efsur.gcp.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true"
 }
+
 app.config['EDAMAM_APP_ID'] = "6fc94a08"
 app.config["EDAMAM_APP_AUTH"] = "015f0b82bfdad03e657f4cecf3b0586d"
 app.config["SOCRATA_APP_TOKEN"] = "fw89kSX55yjwub5zQ1FRNaOuW"

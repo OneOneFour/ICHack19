@@ -120,7 +120,8 @@ def login():
         if user is None or not user.check_password(request.form['password']):
             flash("Your username or password is not valid. Please check your details and try again")
             return redirect('login')
-        login_user(user)
+        remember_me = bool(request.form['rememberme'])
+        login_user(user,remember_me)
         return redirect(url_for('index'))
     return render_template("login.html", title="Login")
 
@@ -143,9 +144,8 @@ def signup():
                         first_name=request.form['first_name'], last_name=request.form['last_name'])
         new_user.set_password(request.form['password'])
         new_user.save()
-        remember_me = bool(request.form['rememberme'])
         login_user(new_user)
-        return redirect(url_for('index'), remember_me)
+        return redirect(url_for('index'))
     return render_template("signup.html", title="Signup")
 
 
