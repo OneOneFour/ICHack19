@@ -1,5 +1,5 @@
 import json
-
+import re
 import requests
 from flask_login import current_user, login_user
 from flask import render_template, request, redirect, abort, jsonify, url_for, flash
@@ -140,4 +140,5 @@ def signup_user():
         if request.form['password'] != request.form['confirm_password']:
             flash("Passwords must match")
             return redirect("signup")
+
     return render_template("signup.html")
