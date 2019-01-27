@@ -36,10 +36,13 @@
                 </div>
             </li>
         </ul>
+
         <form class="form-inline my-2 my-lg-0" style="margin-right: 10px">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
         </form>
+        <a class="btn btn-outline-light my-2 my-sm-0" role="button" href="/ideal" style="margin-right: 10px">My App<span class="sr-only">(current)</span></a>
+
         <ul class="navbar-nav">
 {#            <li style="font-weight: bold; margin-right:10px">#}
 {#                <a class="btn btn-outline-light my-2 my-sm-0" role="button" href="{{ url_for('ideal') }}">Your App<span class="sr-only">(current)</span></a>#}
@@ -60,8 +63,9 @@
 </nav>
 
 <!-- The sidebar -->
-<div class="row">
-<div class="sidebar" style="margin-left: 10px">
+<div class="row" style="background-color: #f4f4ed; min-height: 100vh;
+    height: 100%;">
+<div class="sidebar" style="margin-left: 10px; position: absolute; background-color: #629460; color: white">
     <a class="active" href="ideal">Expiring soon</a>
     {% if food %}
     <a class="active" href="{{ url_for('recipes',id=food.id|string) }}">Recipes</a>

@@ -20,7 +20,7 @@
 /* Active/current link */
 .sidebar a.active {
     text-decoration: none;
-    color: #143109;
+    color: white;
 }
 
 /* Links on mouse-over */
