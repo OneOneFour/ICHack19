@@ -1,0 +1,81 @@
+{% extends "navBar.html" %}
+{% block content %}
+<!-- The sidebar -->
+<div class="row">
+<div class="sidebar" style="margin-left: 10px">
+    <a class="active" href="#home">Expiring soon</a>
+    <a href="#news">Recipes</a>
+    <a href="#contact">Your products</a>
+    <a href="#about">Add product</a>
+    <a href="#about">Settings</a>
+</div>
+
+<!-- product -->
+<div class="col-6 post">
+        <div class="row" style="height: 2rem; background-color: #629460;">
+            <p style="margin: auto;font-size: 1.5rem;font-weight: bold;color: white;">Carrots</p>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <img src="{{ url_for('static', filename='assets/product.jpg') }}" alt="Food" style="width: 100%; border-radius: 50%; margin-top: 10px">
+            </div>
+            <div class="col-8" style=" margin-top: 10px">
+                <div class="row">
+
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p>Expiry date: 30 January 2019</p>
+                    </div>
+                    <div class="col-6">
+                        <p>Quantity: 1.5kg</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <p>CO2 emission: 1kg</p>
+                    </div>
+                    <div class="col-4">
+                        <p>Water usage: 100L</p>
+                    </div>
+                    <div class="col-4">
+                        <p>Mileage: 2km</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- recipe -->
+<div class="col-6 post">
+    <div class="col-6" style="background-color: #f0f0f0;">
+        <div class="row">
+            <div class="col-4">
+                Image
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    recipe
+                </div>
+                <div class="row">
+                    <div class="col">
+                        url
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        Vegan
+                    </div>
+                    <div class="col-4">
+                        Vegetarian
+                    </div>
+                    <div class="col-4">
+                        Other
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

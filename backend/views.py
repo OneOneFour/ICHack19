@@ -12,6 +12,14 @@ github_blueprint = make_github_blueprint(client_id='b7fe8aa6299d7d8aa187',
 
 app.register_blueprint(github_blueprint, url_prefix='/github_login')
 
+@app.route('/')
+@app.route('/index')
+def index():
+    return render_template("index.html")
+
+@app.route('/ideal')
+def ideal():
+    return render_template("ideal.html")
 
 @app.route('/foods')
 def show_foods():
