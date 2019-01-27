@@ -21,6 +21,9 @@ def index():
 def ideal():
     return render_template("ideal.html")
 
+
+
+
 @app.route('/foods')
 def show_foods():
     foods = Food.objects
@@ -154,9 +157,10 @@ def github_login():
     account_info = github.get('/user')
 
     if account_info.ok:
-        account_info_json = account_info.json()
+        # account_info_json = account_info.json()
 
-        return redirect(url_for('ideal'))
+        # return '<h1>Your Github name is {}'.format(account_info_json['login'])
+        return redirect(url_for('index'))
 
     return '<h1>Request failed!</h1>'
 
@@ -164,3 +168,4 @@ def github_login():
 @app.route('/recover')
 def recover():
     return render_template("forgot.html")
+

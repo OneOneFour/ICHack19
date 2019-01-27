@@ -8,11 +8,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import math
 
 
-class User(UserMixin,mongo_db.Document):
+class User(UserMixin, mongo_db.Document):
     username = mongo_db.StringField(required=True, unique=True)
     first_name = mongo_db.StringField(required=True)
     last_name = mongo_db.StringField(required=True)
-    password = mongo_db.StringField(required=True)
+    password = mongo_db.StringField()
     email = mongo_db.EmailField(required=True)
 
     def set_password(self, password):
