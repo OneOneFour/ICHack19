@@ -4,7 +4,7 @@
     padding: 0;
     width: 200px;
     background-color: #f4f4ed;
-    color: #143109;
+    color: #9dbc9c;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -70,4 +70,8 @@ div.content {
 
 p {
     font-size: large;
+}
+
+.sidebar a.active:hover{
+    text-decoration: underline;
 }
