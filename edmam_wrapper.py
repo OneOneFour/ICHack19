@@ -2,7 +2,7 @@ import requests
 from main import app
 import json
 
-intresting_keys = ("label", "url", "calories", "healthLabels")
+intresting_keys = ("label","image", "url", "calories", "healthLabels")
 
 
 def receipe_lookup(query):

@@ -34,18 +34,6 @@
                             <p>Barcode : {{ food.barcode }}</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <h2>Suggested Recipes</h2>
-                            <ul>
-                                {% for recipe in recipes %}
-                                    <li>
-                                        <a href="{{ recipe["url"] }}"><h3>{{ recipe["label"] }}</h3></a>
-                                        <p>Calories:{{ recipe["calories"]|int }}</p></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>{% else %}

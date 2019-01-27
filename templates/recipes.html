@@ -1,33 +1,36 @@
 {% extends "sideNav.html" %}
 {% block content %}
-<!-- recipe -->
-<div class="col-6 post">
-        <div class="row" style="height: 2rem; background-color: #629460;">
-            <p style="margin: auto;font-size: 1.5rem;font-weight: bold;color: white;">Salad</p>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <img src="{{ url_for('static', filename='assets/product.jpg') }}" alt="Food" style="width: 100%; border-radius: 50%; margin-top: 10px">
+    <!-- recipe -->
+    {% for recipe in recipes %}
+        <div class="col-6 post">
+            <div class="row" style="height: 2rem; background-color: #629460;">
+                <p style="margin: auto;font-size: 1.5rem;font-weight: bold;color: white;">{{ recipe["label"] }}</p>
             </div>
-            <div class="col-8" style=" margin-top: 60px">
-                <div class="row">
-
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{ recipe["image"] }}" alt="Food"
+                         style="width: 100%; border-radius: 50%; margin-top: 10px">
                 </div>
-                <div class="row">
-                    <div class="col-4">
-                        <p>Vegan: Yes</p>
+                <div class="col-8" style=" margin-top: 60px">
+                    <div class="row">
+                        {{ recipe['calories'] }}
                     </div>
-                    <div class="col-4">
-                        <p>Vegetarian: Yes</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <p>Vegan: Yes</p>
+                        </div>
+                        <div class="col-4">
+                            <p>Vegetarian: Yes</p>
+                        </div>
+                        <div class="col-4">
+                            <p>Nuts: No</p>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <p>Nuts: No</p>
+                    <div class="row" style="text-align: center">
+                        <a href="{{ recipes["url"] }}">Link to the recipe</a>
                     </div>
-                </div>
-                <div class="row" style="text-align: center">
-                    <a href="google.com">Link to the recipe</a>
                 </div>
             </div>
         </div>
-</div>
+    {% endfor %}
 {% endblock %}

@@ -20,12 +20,6 @@ from models import Food, User
 def index():
     return render_template("index.html", current_user=current_user)
 
-
-@app.route('/recipes')
-def recipes():
-    return render_template("recipes.html")
-
-
 @app.route('/aboutUs')
 def aboutUs():
     return render_template("aboutUs.html")
@@ -49,10 +43,19 @@ def delete_food(id):
 @app.route('/search_food/', methods=['GET'])
 def search_food():
     q = request.args.get("search_food")
-    f, recipes = None,None
+    f, recipes = None, None
     if q:
-        f = Food.objects(name = q).first()
-    return render_template("ideal.html", food=f, recipes=recipes)
+        f = Food.objects(name__icontains=q).first()
+    return render_template("ideal.html", food=f)
+
+
+@app.route('/recipes/<int:id>')
+def recipes(id):
+    food = Food.object.get_or_404(id=id)
+    if food:
+        recipes = food.get_recipes()
+        return render_template("recipes.html", recipes=recipes)
+    return abort(400)
 
 
 @app.route('/api/food/<name>', methods=['GET'])
