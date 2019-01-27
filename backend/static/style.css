@@ -56,6 +56,9 @@ body{
     float: left;
     margin: 10px 10px;
 }
+.remember{
+    margin-left: 10px;
+}
 .btn{
     background-color: forestgreen;
     border: 2px solid forestgreen;
