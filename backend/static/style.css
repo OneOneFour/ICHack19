@@ -4,7 +4,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: url("green2.jpg") no-repeat;
+    background: url("greenslogan.JPG") no-repeat;
     background-size: cover;
 }
 .login-box{
@@ -118,10 +118,10 @@ body{
     padding: 3px;
 }
 .muted{
-    font-size: 10pt;
-    color:#aaa;
+    font-size: 15px;
+    color: black;
 }
 .muted a{
-    font-size: 10pt;
-    color:#aaa;
+    font-size: 15px;
+    color: blue;
 }
