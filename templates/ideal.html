@@ -1,59 +1,54 @@
 {% extends "sideNav.html" %}
 {% block content %}
-
-<section>
-    {% for food in foods %}
-        <article>
-            <h2>{{ food.name }}</h2>
-            <p>Expires in {{ food.get_expiry_time() }} days</p>
-            <h3>Here are some recipes!</h3>
-            <ul>
-            {% for recipe in food.get_recipe() %}
-                <li>
-                <a href="{{ recipe["url"] }}"><h3>{{ recipe["label"] }}</h3></a>
-                    <p>Calories:{{ recipe["calories"]|int}}</p></li>
-                {% else %}
-                <h3>We couldn't find any recipes for this product :-(</h3>
-            {% endfor %}
-            </ul>
-        </article>
-    {% endfor %}
-</section>
-
-<!-- product -->
-<div class="col-6 post">
-        <div class="row" style="height: 2rem; background-color: #629460;">
-            <p style="margin: auto;font-size: 1.5rem;font-weight: bold;color: white;">Carrots</p>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <img src="{{ url_for('static', filename='assets/product.jpg') }}" alt="Food" style="width: 100%; border-radius: 50%; margin-top: 10px">
+    <!-- product -->
+    {% if food%}
+        <div class="col-6 post">
+            <div class="row" style="height: 2rem; background-color: #629460;">
+                <p style="margin: auto;font-size: 1.5rem;font-weight: bold;color: white;">{{ food.name }}</p>
             </div>
-            <div class="col-8" style=" margin-top: 60px">
-                <div class="row">
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{ url_for('static', filename='assets/product.jpg') }}" alt="Food"
+                         style="width: 100%; border-radius: 50%; margin-top: 10px">
+                </div>
+                <div class="col-8" style=" margin-top: 60px">
+                    <div class="row">
 
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <p>Expiry date: 30 January 2019</p>
                     </div>
-                    <div class="col-6">
-                        <p>Quantity: 1.5kg</p>
+                    <div class="row">
+                        {#                    <div class="col-6">#}
+                        {#                        <p>Expiry date: 30 January 2019</p>#}
+                        {#                    </div>#}
+                        <div class="col-6">
+                            <p>Expiry Advice : {{ food.expiry_advice }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <p>CO2 emission: 1kg</p>
+                    <div class="row">
+                        <div class="col-4">
+                            <p>CO2 emission: {{ food.co2_emission_base }}/p>
+                        </div>
+                        <div class="col-4">
+                            <p>Country of Origin : {{ food.country_of_origin }}</p>
+                        </div>
+                        <div class="col-4">
+                            <p>Barcode : {{ food.barcode }}</p>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <p>Water usage: 100L</p>
-                    </div>
-                    <div class="col-4">
-                        <p>Mileage: 2km</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <h2>Suggested Recipes</h2>
+                            <ul>
+                                {% for recipe in recipes %}
+                                    <li>
+                                        <a href="{{ recipe["url"] }}"><h3>{{ recipe["label"] }}</h3></a>
+                                        <p>Calories:{{ recipe["calories"]|int }}</p></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-</div>
-
+        </div>{% else %}
+        <h2>No food found :-(</h2>
+    {% endif %}
 {% endblock %}

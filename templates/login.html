@@ -2,40 +2,40 @@
 {% block content %}
     <h1>Login</h1>
     <form action="" method="post">
-    <div class="textbox">
-        <i class="fas fa-user"></i>
-        <input type= "text" name = "username" placeholder = "Username" required = "required"/>
+        <div class="textbox">
+            <i class="fas fa-user"></i>
+            <input type="text" name="username" placeholder="Username" required="required"/>
+        </div>
+
+        <div class="textbox">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" placeholder="Password" required="required"/>
+        </div>
+
+        <div class="remember">
+            <label><input id="rememberme" name="remember_me" value="remember" type="checkbox"/> &nbsp;Remember
+                me</label>
+        </div>
+
+
+        <div class="text-right p-t-13 p-b-23">
+
+            <a href="{{ url_for("recover") }}" class="txt2">
+                Forgot username/password?
+            </a>
+        </div>
+
+
+        <input type="submit" class="btn" value="Sign in">
+    </form>
+    {#    <div class="text-mid">#}
+    {#        Or sign in with#}
+    {#    </div>#}
+    {#    </form>#}
+    {#    <a href="{{ url_for("github.login")    }}"><input type="button" class="btn_2" value="Github"></a>#}
+
+
+    <div class="muted textbox">
+        Need an account? <a href="{{ url_for("signup") }}"> Sign up here! </a>
     </div>
-
-    <div class="textbox">
-        <i class="fas fa-lock"></i>
-        <input type = "password" name = "password" placeholder = "Password" required = "required"/>
-    </div>
-
-    <div class = "remember">
-        <label><input id="rememberme" name="rememberme" value="remember" type="checkbox" /> &nbsp;Remember me</label>
-    </div>
-
-
-    <div class="text-right p-t-13 p-b-23">
-
-        <a href="{{ url_for("recover")    }}" class="txt2">
-            Forgot username/password?
-        </a>
-    </div>
-
-
-    <input type="submit" class="btn" value="Sign in">
-
-{#    <div class="text-mid">#}
-{#        Or sign in with#}
-{#    </div>#}
-{#    </form>#}
-{#    <a href="{{ url_for("github.login")    }}"><input type="button" class="btn_2" value="Github"></a>#}
-
-
-    <div class="muted textbox" >
-       Need an account? <a href = "{{ url_for("signup") }}"> Sign up here! </a>
-    </div>
-
 {% endblock %}
