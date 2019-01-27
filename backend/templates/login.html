@@ -33,12 +33,12 @@
     </form>
 {#    <div id = "alt_login">#}
 {#    <div><input type="button" class="btn_1" value="Twitter"></div>#}
-    <a href="http://127.0.01:5000/github"><input type="button" class="btn_2" value="Github"></a>
+    <a href="{{ url_for("github.login")    }}"><input type="button" class="btn_2" value="Github"></a>
 {#    <div class="clear"></div>#}
 {#    </div>#}
 
-    <div class="text-bot" >
-        <a href = "http://127.0.1:5000/signup"> Need an account? </a>
+    <div class="muted textbox" >
+       Need an account? <a href = "{{ url_for("signup") }}"> Sign up here! </a>
     </div>
 
 {% endblock %}
