@@ -72,7 +72,7 @@ def remove_food_from_db():
         return abort(500)
 
 
-@app.route("/api/food/<int:id>", method=['PUT'])
+@app.route("/api/food/<int:id>", methods=['PUT'])
 def update_food(id):
     food = Food.objects.get_or_404(_id=id)
     if request.data:
@@ -128,6 +128,16 @@ def show_login():
         return redirect(url_for('index'))
     return render_template("login.html")
 
-@app.route('/signup', methods=["POST", "GET"])
-def show_signup():
+
+@app.route("/signup", methods=["POST", "GET"])
+def signup_user():
+    if current_user.is_authenticated:
+        return redirect(url_for("index"))
+    if request.method == 'POST':
+        if User.objects(username=request.form["username"]).count() > 0:
+            flash("THIS USERNAME ALREADY EXISTS")
+            return redirect("signup")
+        if request.form['password'] != request.form['confirm_password']:
+            flash("Passwords must match")
+            return redirect("signup")
     return render_template("signup.html")

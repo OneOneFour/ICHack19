@@ -13,6 +13,7 @@ class User(mongo_db.Document):
     last_name = mongo_db.StringField(required=True)
     password = mongo_db.StringField()
 
+
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
