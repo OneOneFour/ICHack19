@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css')}}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
-</head>
-<body>
-<div class="login-box">
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-    {% for message in messages %}
-        <li>{{ message }}</li>
-    {% endfor %}
-    {% endif %}
-    {%endwith %}
-    </ul>
+{% extends "auth_style.html" %}
+{% block content %}
     <h1>Login</h1>
     <form action="" method="post">
     <div class="textbox">
@@ -55,6 +37,4 @@
         <a href = "#"> Need an account? </a>
     </div>
 
-</div>
-</body>
-</html>
+{% endblock %}
