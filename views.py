@@ -31,11 +31,6 @@ def aboutUs():
     return render_template("aboutUs.html")
 
 
-@app.route('/ideal')
-def ideal():
-    return render_template("ideal.html")
-
-
 @app.route('/foods')
 def show_foods():
     foods = Food.objects
@@ -49,6 +44,15 @@ def delete_food(id):
         return "Item deleted successfully"
     else:
         return f"Error deleting item with id:{id}"
+
+
+@app.route('/search_food/', methods=['GET'])
+def search_food():
+    q = request.args.get("search_food")
+    f, recipes = None,None
+    if q:
+        f = Food.objects(name = q).first()
+    return render_template("ideal.html", food=f, recipes=recipes)
 
 
 @app.route('/api/food/<name>', methods=['GET'])
@@ -132,7 +136,7 @@ def login():
         if user is None or not user.check_password(request.form['password']):
             flash("Your username or password is not valid. Please check your details and try again")
             return redirect('login')
-        remember_me = bool(request.form['rememberme'])
+        remember_me = bool(request.form['remember_me'])
         login_user(user, remember_me)
         return redirect(url_for('index'))
     return render_template("login.html", title="Login")
