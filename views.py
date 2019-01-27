@@ -49,7 +49,7 @@ def search_food():
     return render_template("ideal.html", food=f)
 
 
-@app.route('/recipes/<int:id>')
+@app.route('/recipes/<id>')
 def recipes(id):
     food = Food.object.get_or_404(id=id)
     if food:
