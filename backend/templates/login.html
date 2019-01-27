@@ -9,8 +9,15 @@
 </head>
 <body>
 <div class="login-box">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
     <h1>Login</h1>
-
+    <form action="" method="post">
     <div class="textbox">
         <i class="fas fa-user"></i>
         <input type= "text" name = "username" placeholder = "Username" required = "required"/>
@@ -34,7 +41,7 @@
     <div class="text-mid">
         Or sign in with
     </div>
-
+    </form>
 {#    <div id = "alt_login">#}
 {#    <div><input type="button" class="btn_1" value="Twitter"></div>#}
     <a href="http://127.0.01:5000/github"><input type="button" class="btn_2" value="Github"></a>

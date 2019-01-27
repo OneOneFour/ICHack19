@@ -1,10 +1,10 @@
 import json
 
 import requests
-from bson import json_util
-from flask import render_template, request, redirect, abort, jsonify, url_for
+from flask_login import current_user, login_user
+from flask import render_template, request, redirect, abort, jsonify, url_for, flash
 from . import app, mongo_db
-from .models import Food
+from .models import Food, User
 from flask_dance.contrib.github import make_github_blueprint, github
 
 github_blueprint = make_github_blueprint(client_id='b7fe8aa6299d7d8aa187',
@@ -117,4 +117,13 @@ def set_food():
 
 @app.route('/login', methods=["POST", "GET"])
 def show_login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    if request.method == 'POST':
+        user = User.objects(username=request.form['username']).first()
+        if user is None or not user.check_password(request.form['password']):
+            flash("Your username or password is not valid. Please check your details and try again")
+            return redirect('login')
+        login_user(user)
+        return redirect(url_for('index'))
     return render_template("login.html")

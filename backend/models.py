@@ -1,6 +1,6 @@
 import requests
 import json
-from . import mongo_db, app
+from . import mongo_db, app, login
 from datetime import datetime
 from .edmam_wrapper import receipe_lookup
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -45,7 +45,7 @@ class Food(mongo_db.Document):
         resp = requests.get(self.FOOD_EMISSION_SITE, params=params, headers=header)
         if resp.status_code == 200:
             food_data = json.loads(resp.text)
-            if len(food_data) >0:
+            if len(food_data) > 0:
                 self.co2_emission_base = float(food_data[0]["grams_co2e_per_serving"])
         super(Food, self).save(*args, **kwargs)
 
@@ -66,3 +66,8 @@ class UserFood(mongo_db.Document):
 
     def has_expired(self):
         return (self.expiry - datetime.now()).days < 0
+
+
+@login.user_loader
+def load_user(id):
+    return User.objects(_id=id)
